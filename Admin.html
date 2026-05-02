@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G4S Admin Panel - Remote Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-container">
+    <!-- Admin Header -->
+    <div class="admin-header">
+        <div>
+            <h1>🔐 G4S ADMIN PANEL</h1>
+            <p>Remote Monitoring - All Sites / All Logbooks</p>
+        </div>
+        <button id="adminLogoutBtn" class="btn btn-danger">Logout</button>
+    </div>
+
+    <!-- Statistics Dashboard -->
+    <div class="stats-grid">
+        <div class="stat-card"><h3>📋 Total Logs</h3><div id="statTotalLogs" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>👥 Active Guards</h3><div id="statActiveGuards" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>🚪 Visitors Today</h3><div id="statVisitorsToday" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>👔 Supervisor Reports</h3><div id="statSupervisorReports" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>📱 Registered Devices</h3><div id="statDevices" class="stat-number">0</div></div>
+    </div>
+
+    <!-- Control Bar -->
+    <div class="card">
+        <div class="card-title">📍 System Controls</div>
+        <div class="btn-group">
+            <button id="refreshAdminBtn" class="btn btn-primary">🔄 Refresh Data</button>
+            <button id="exportAllBtn" class="btn btn-outline">📎 Export All CSV</button>
+            <button id="resetAllBtn" class="btn btn-danger">⚠️ Reset All Data</button>
+        </div>
+    </div>
+
+    <!-- Admin Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="logs">📋 All Logs</button>
+        <button class="tab-btn" data-tab="supervisors">👔 Supervisor Reports</button>
+        <button class="tab-btn" data-tab="active">🟢 Active Guards</button>
+        <button class="tab-btn" data-tab="devices">📱 Devices</button>
+    </div>
+
+    <!-- Tab: All Logs -->
+    <div id="admin-tab-logs" class="tab-content active">
+        <div class="card">
+            <div class="search-row">
+                <input type="text" id="adminSearch" placeholder="Search by OB#, name, matric...">
+                <input type="date" id="adminDateFilter">
+                <button id="clearAdminSearch" class="btn-sm">Clear</button>
+            </div>
+            <div id="adminLogsList" class="log-list"></div>
+        </div>
+    </div>
+
+    <!-- Tab: Supervisor Reports -->
+    <div id="admin-tab-supervisors" class="tab-content">
+        <div class="card">
+            <div id="adminSupervisorList" class="log-list"></div>
+        </div>
+    </div>
+
+    <!-- Tab: Active Guards -->
+    <div id="admin-tab-active" class="tab-content">
+        <div class="card">
+            <div class="card-title">🌞 Active Day Guards</div>
+            <div id="adminDayGuards"></div>
+        </div>
+        <div class="card">
+            <div class="card-title">🌙 Active Night Guards</div>
+            <div id="adminNightGuards"></div>
+        </div>
+        <div class="card">
+            <div class="card-title">🚪 Current Visitors</div>
+            <div id="adminVisitors"></div>
+        </div>
+    </div>
+
+    <!-- Tab: Devices -->
+    <div id="admin-tab-devices" class="tab-content">
+        <div class="card">
+            <div class="card-title">📱 Registered Devices</div>
+            <div id="adminDevicesList"></div>
+            <button id="addDeviceBtn" class="btn btn-primary" style="margin-top: 12px;">➕ Add Device</button>
+        </div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

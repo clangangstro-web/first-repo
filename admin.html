@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G4S Admin Panel - Enterprise Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-container">
+    <div class="admin-header">
+        <div>
+            <h1>🔐 G4S ADMIN PANEL - CAMEROON</h1>
+            <p>Enterprise Monitoring | All Regions | All Posts</p>
+        </div>
+        <button id="adminLogoutBtn" class="btn btn-danger">Logout</button>
+    </div>
+
+    <!-- Statistics Dashboard -->
+    <div class="stats-grid">
+        <div class="stat-card"><h3>📋 Total Logs</h3><div id="statTotalLogs" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>📍 Total Posts</h3><div id="statTotalPosts" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>👥 Active Guards</h3><div id="statActiveGuards" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>🚪 Visitors Today</h3><div id="statVisitorsToday" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>👔 Reports Today</h3><div id="statReportsToday" class="stat-number">0</div></div>
+        <div class="stat-card"><h3>⚠️ Issues (24h)</h3><div id="statIssues" class="stat-number">0</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="card">
+        <div class="card-title">🔍 FILTER BY LOCATION</div>
+        <div class="filter-row">
+            <select id="filterRegion" class="filter-select">
+                <option value="all">All Regions</option>
+            </select>
+            <select id="filterCity" class="filter-select">
+                <option value="all">All Cities</option>
+            </select>
+            <select id="filterZone" class="filter-select">
+                <option value="all">All Zones</option>
+            </select>
+            <select id="filterPost" class="filter-select">
+                <option value="all">All Posts</option>
+            </select>
+            <button id="applyFilterBtn" class="btn btn-primary">Apply Filter</button>
+            <button id="refreshAdminBtn" class="btn btn-outline">🔄 Refresh</button>
+        </div>
+    </div>
+
+    <!-- Hierarchy Tree View -->
+    <div class="card">
+        <div class="card-title">🌍 POST HIERARCHY (Region → City → Zone → Post)</div>
+        <div id="hierarchyTree" class="hierarchy-tree"></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="dashboard">📊 Dashboard</button>
+        <button class="tab-btn" data-tab="posts">📍 All Posts</button>
+        <button class="tab-btn" data-tab="logs">📋 All Logs</button>
+        <button class="tab-btn" data-tab="supervisors">👔 Supervisor Reports</button>
+        <button class="tab-btn" data-tab="active">🟢 Active Guards</button>
+        <button class="tab-btn" data-tab="alerts">⚠️ Alerts & Issues</button>
+    </div>
+
+    <!-- Tab: Dashboard -->
+    <div id="admin-tab-dashboard" class="tab-content active">
+        <div class="card">
+            <div class="card-title">📈 QUICK STATISTICS</div>
+            <div id="dashboardStats" class="dashboard-stats"></div>
+        </div>
+        <div class="card">
+            <div class="card-title">🔄 POST SYNC STATUS</div>
+            <div id="syncStatusList" class="sync-list"></div>
+        </div>
+    </div>
+
+    <!-- Tab: All Posts -->
+    <div id="admin-tab-posts" class="tab-content">
+        <div class="card">
+            <div class="card-title">📋 ALL REGISTERED POSTS</div>
+            <div id="allPostsList" class="posts-list"></div>
+        </div>
+    </div>
+
+    <!-- Tab: All Logs -->
+    <div id="admin-tab-logs" class="tab-content">
+        <div class="card">
+            <div class="card-title">📋 ALL LOGS (Filter by post above)</div>
+            <div class="search-row">
+                <input type="text" id="adminSearch" placeholder="Search by OB#, name, matric...">
+                <input type="date" id="adminDateFilter">
+                <button id="clearAdminSearch" class="btn-sm">Clear</button>
+                <button id="exportAllLogsBtn" class="btn-sm btn-outline">Export CSV</button>
+            </div>
+            <div id="adminLogsList" class="log-list" style="max-height:500px;"></div>
+        </div>
+    </div>
+
+    <!-- Tab: Supervisor Reports -->
+    <div id="admin-tab-supervisors" class="tab-content">
+        <div class="card">
+            <div class="card-title">👔 ALL SUPERVISOR INSPECTION REPORTS</div>
+            <div id="adminSupervisorList" class="log-list"></div>
+        </div>
+    </div>
+
+    <!-- Tab: Active Guards -->
+    <div id="admin-tab-active" class="tab-content">
+        <div class="card">
+            <div class="card-title">🟢 ACTIVE GUARDS BY POST</div>
+            <div id="adminActiveGuardsList" class="guards-list"></div>
+        </div>
+    </div>
+
+    <!-- Tab: Alerts & Issues -->
+    <div id="admin-tab-alerts" class="tab-content">
+        <div class="card">
+            <div class="card-title">⚠️ POSTS WITH ISSUES (Last 24h)</div>
+            <div id="issuesList" class="issues-list"></div>
+        </div>
+        <div class="card">
+            <div class="card-title">📡 POSTS WITH SYNC DELAY (>24h)</div>
+            <div id="syncDelayList" class="sync-list"></div>
+        </div>
+    </div>
+</div>
+
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

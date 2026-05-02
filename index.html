@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>G4S Enterprise Security Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="screen active">
+    <div class="login-card">
+        <div class="logo">
+            <h1>🔐 G4S CAMEROON</h1>
+            <p>Enterprise Security Management System</p>
+        </div>
+        <div class="form-group">
+            <label>📛 Matriculation Number</label>
+            <input type="text" id="loginMatric" placeholder="Enter your matriculation number">
+        </div>
+        <div class="form-group">
+            <label>🔑 One-Time PIN (OTP)</label>
+            <input type="password" id="loginOtp" placeholder="Enter OTP">
+        </div>
+        <button class="btn btn-primary" id="loginBtn">LOGIN</button>
+        <div class="demo-note">
+            <small>Demo: GUARD123 / 123456 | SUPER123 / 123456 | ADMIN123 / 123456</small>
+        </div>
+    </div>
+</div>
+
+<!-- POST REGISTRATION SCREEN (First time setup) -->
+<div id="registerPostScreen" class="screen">
+    <div class="register-card">
+        <div class="logo">
+            <h1>📌 REGISTER YOUR POST</h1>
+            <p>Please enter your G4S post information</p>
+        </div>
+        
+        <div class="form-group">
+            <label>🌍 Select Region</label>
+            <select id="regRegion" class="region-select"></select>
+        </div>
+        
+        <div class="form-group">
+            <label>🏙️ Select City/Town</label>
+            <select id="regCity" class="city-select"></select>
+        </div>
+        
+        <div class="form-group">
+            <label>📍 Select or Enter Zone</label>
+            <select id="regZone">
+                <option value="">-- Select existing zone --</option>
+            </select>
+            <input type="text" id="regZoneNew" placeholder="Or enter new zone name" style="margin-top: 8px;">
+        </div>
+        
+        <div class="form-group">
+            <label>🏢 Post Name</label>
+            <input type="text" id="regPostName" placeholder="e.g., G4S Douala Bonapriso Main Gate">
+        </div>
+        
+        <div class="form-group">
+            <label>🔢 G4S Zone OB Number (Provided by HQ)</label>
+            <input type="text" id="regZoneObNumber" placeholder="e.g., 3/3, 1113/03, 2000/1000">
+            <small>This is the unique identifier from G4S headquarters</small>
+        </div>
+        
+        <div class="btn-group">
+            <button class="btn btn-primary" id="registerPostBtn">✅ REGISTER POST</button>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN APP SCREEN -->
+<div id="mainScreen" class="screen">
+    <!-- Header with Post Info -->
+    <div class="header">
+        <div>
+            <h2>📋 G4S LOG BOOK</h2>
+            <div class="post-info-badge" id="postInfoBadge"></div>
+            <span id="userRoleBadge" class="badge-role">Guard</span>
+        </div>
+        <div class="header-right">
+            <span id="userNameDisplay" class="user-name"></span>
+            <button id="logoutBtn" class="btn-logout">🚪 Logout</button>
+        </div>
+    </div>
+
+    <!-- Offline Status -->
+    <div id="offlineBanner" class="offline-banner" style="display: none;">⚠️ OFFLINE MODE - Data saved locally</div>
+
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="shifts">👥 SHIFTS</button>
+        <button class="tab-btn" data-tab="visitors">🚪 VISITORS</button>
+        <button class="tab-btn" data-tab="logbook">📋 LOG BOOK</button>
+        <button class="tab-btn" data-tab="reports">📄 REPORTS</button>
+        <button class="tab-btn supervisor-tab" data-tab="supervisor" style="display: none;">👔 SUPERVISOR</button>
+    </div>
+
+    <!-- TAB 1: SHIFTS -->
+    <div id="tab-shifts" class="tab-content active">
+        <div class="card">
+            <div class="card-title">🌞 DAY SHIFT <span id="dayCount" class="count">0</span></div>
+            <div class="form-row">
+                <input type="text" id="dayName" placeholder="Guard Full Name">
+                <input type="text" id="dayMatric" placeholder="Matriculation Number">
+                <button id="addDayBtn" class="btn btn-primary">➕ ADD DAY GUARD</button>
+            </div>
+            <div id="dayGuardList" class="guard-list"></div>
+            <button id="endDayBtn" class="btn btn-danger" style="margin-top: 12px;">⏹ END ALL DAY SHIFTS</button>
+            
+            <div id="dayHandover" style="display: none; margin-top: 16px;">
+                <textarea id="dayAssets" rows="2" placeholder="Client belongings / assets report"></textarea>
+                <textarea id="dayIncident" rows="2" placeholder="Incident report"></textarea>
+                <div class="confirmation-box">
+                    <p><strong>Night Guard Confirmation Required</strong></p>
+                    <input type="text" id="nightConfirmMat" placeholder="Night Guard Matriculation">
+                    <div class="btn-group">
+                        <button id="nightConfirmGood" class="btn btn-success">✅ ALL GOOD</button>
+                        <button id="nightConfirmIssue" class="btn btn-warning">⚠️ ISSUES FOUND</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🌙 NIGHT SHIFT <span id="nightCount" class="count">0</span></div>
+            <div class="form-row">
+                <input type="text" id="nightName" placeholder="Guard Full Name">
+                <input type="text" id="nightMatric" placeholder="Matriculation Number">
+                <button id="addNightBtn" class="btn btn-primary-night">➕ ADD NIGHT GUARD</button>
+            </div>
+            <div id="nightGuardList" class="guard-list"></div>
+            <button id="endNightBtn" class="btn btn-danger" style="margin-top: 12px;">⏹ END ALL NIGHT SHIFTS</button>
+            
+            <div id="nightHandover" style="display: none; margin-top: 16px;">
+                <textarea id="nightAssets" rows="2" placeholder="Night assets verification"></textarea>
+                <textarea id="nightIncident" rows="2" placeholder="Night incident report"></textarea>
+                <div class="confirmation-box">
+                    <p><strong>Day Guard Confirmation Required</strong></p>
+                    <input type="text" id="dayConfirmMat" placeholder="Day Guard Matriculation">
+                    <div class="btn-group">
+                        <button id="dayConfirmGood" class="btn btn-success">✅ ALL GOOD</button>
+                        <button id="dayConfirmIssue" class="btn btn-warning">⚠️ ISSUES FOUND</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: VISITORS -->
+    <div id="tab-visitors" class="tab-content">
+        <div class="card">
+            <div class="card-title">🚪 VISITOR MANAGEMENT</div>
+            <div class="form-row">
+                <input type="text" id="visName" placeholder="Full Name">
+                <input type="text" id="visPhone" placeholder="Phone Number">
+                <input type="text" id="visId" placeholder="ID Card Number">
+                <select id="visPurpose">
+                    <option value="Meeting">Meeting</option>
+                    <option value="Delivery">Delivery</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="visHost" placeholder="Person/Office to Visit">
+                <div class="btn-group">
+                    <button id="visitorInBtn" class="btn btn-visitor-in">✅ VISITOR IN</button>
+                    <button id="visitorOutBtn" class="btn btn-visitor-out">❌ VISITOR OUT</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">📌 CURRENT VISITORS ON SITE</div>
+            <div id="visitorList" class="visitor-list"></div>
+        </div>
+    </div>
+
+    <!-- TAB 3: LOG BOOK with SEARCH -->
+    <div id="tab-logbook" class="tab-content">
+        <div class="card">
+            <div class="card-title">📋 SEARCH LOG BOOK</div>
+            <div class="search-row">
+                <input type="text" id="searchInput" placeholder="Search by OB#, name, matric, ID...">
+                <input type="date" id="searchDateFilter">
+                <button id="clearSearchBtn" class="btn-sm">Clear</button>
+            </div>
+            <div id="logList" class="log-list"></div>
+        </div>
+    </div>
+
+    <!-- TAB 4: REPORTS -->
+    <div id="tab-reports" class="tab-content">
+        <div class="card">
+            <div class="card-title">📄 EXPORT REPORTS</div>
+            <div class="form-row">
+                <label>Start Date</label>
+                <input type="date" id="reportStart">
+                <label>End Date</label>
+                <input type="date" id="reportEnd">
+            </div>
+            <div class="btn-group">
+                <button id="exportPdfBtn" class="btn btn-primary">📑 Export PDF</button>
+                <button id="exportCsvBtn" class="btn btn-outline">📎 Export CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 5: SUPERVISOR -->
+    <div id="tab-supervisor" class="tab-content">
+        <div class="card">
+            <div class="card-title">👔 POST INSPECTION REPORT</div>
+            <textarea id="supervisorDesc" rows="4" placeholder="Describe the situation of the post, observations, incidents, recommendations..."></textarea>
+            <input type="text" id="supervisorMat" placeholder="Your Matriculation Number">
+            <button id="submitSupervisorBtn" class="btn btn-success">✍️ SIGN & SUBMIT</button>
+        </div>
+        <div class="card">
+            <div class="card-title">📜 PREVIOUS SUPERVISOR REPORTS</div>
+            <div id="supervisorHistoryList"></div>
+        </div>
+    </div>
+</div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

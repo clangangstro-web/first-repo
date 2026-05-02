@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0a3d35;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+/* Screens */
+.screen {
+    display: none;
+}
+.screen.active {
+    display: block;
+}
+
+/* Login & Register Cards */
+.login-card, .register-card {
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 28px;
+    padding: 32px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.login-card h1, .register-card h1 {
+    color: #0a3d35;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.login-card p, .register-card p {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #666;
+}
+.demo-note {
+    margin-top: 20px;
+    padding: 8px;
+    background: #e8f5e9;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #2e7d32;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    background: white;
+    border-radius: 24px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.user-name {
+    font-weight: 600;
+    color: #0a3d35;
+}
+.badge-role {
+    background: #0a3d35;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-top: 4px;
+}
+.post-info-badge {
+    background: #f5a623;
+    color: #1a1a1a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    display: inline-block;
+    margin-top: 4px;
+    font-weight: 600;
+}
+.btn-logout {
+    background: none;
+    border: 1px solid #c62828;
+    color: #c62828;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    border-left: 5px solid #f5a623;
+    padding-left: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.count {
+    background: #e0e0e0;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 16px;
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.form-row input, .form-row select, .form-row textarea {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    font-size: 14px;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    font-size: 14px;
+}
+label {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+    display: block;
+}
+small {
+    font-size: 11px;
+    color: #666;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+}
+.btn-primary {
+    background: #0a3d35;
+    color: white;
+}
+.btn-primary-night {
+    background: #1a237e;
+    color: white;
+}
+.btn-visitor-in {
+    background: #2c7da0;
+    color: white;
+}
+.btn-visitor-out {
+    background: #e67e22;
+    color: white;
+}
+.btn-danger {
+    background: #c62828;
+    color: white;
+}
+.btn-success {
+    background: #2e7d32;
+    color: white;
+}
+.btn-warning {
+    background: #f5a623;
+    color: #1a1a1a;
+}
+.btn-outline {
+    background: white;
+    border: 2px solid #0a3d35;
+    color: #0a3d35;
+}
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.tab-btn.active {
+    background: #0a3d35;
+    color: white;
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* Lists */
+.guard-list, .visitor-list, .log-list {
+    background: #f5f5f5;
+    border-radius: 16px;
+    padding: 12px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+.guard-item {
+    background: white;
+    padding: 10px 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid #ddd;
+}
+.log-entry {
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+.log-entry strong {
+    color: #0a3d35;
+}
+
+/* Search */
+.search-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.search-row input {
+    flex: 2;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+}
+.search-row button {
+    flex: 0;
+}
+
+/* Confirmation Box */
+.confirmation-box {
+    background: #e8f5e9;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 16px;
+}
+.confirmation-box input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+}
+
+/* Offline Banner */
+.offline-banner {
+    background: #f5a623;
+    color: #1a1a1a;
+    padding: 10px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 8px;
+    }
+    .btn-group {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+    }
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .login-card, .register-card {
+        margin: 20px auto;
+        padding: 24px 16px;
+    }
+}
