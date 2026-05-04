@@ -1,55 +1,222 @@
-// ========== CAMEROON REGIONS AND CITIES DATA ==========
-const CAMEROON_DATA = {
-    regions: [
-        {
-            name: "Littoral",
-            cities: ["Douala", "Nkongsamba", "Loum", "Manjo", "Melong", "Yabassi", "Dibombari", "Mbanga"]
-        },
-        {
-            name: "Centre",
-            cities: ["Yaoundé", "Mbalmayo", "Obala", "Monatélé", "Nanga Eboko", "Ngoumou", "Okola", "Essé"]
-        },
-        {
-            name: "North",
-            cities: ["Garoua", "Lagdo", "Poli", "Tcholliré", "Rey Bouba", "Figuil"]
-        },
-        {
-            name: "Far North",
-            cities: ["Maroua", "Mokolo", "Kousséri", "Yagoua", "Mora", "Kaélé", "Bogo", "Kolofata"]
-        },
-        {
-            name: "Adamawa",
-            cities: ["Ngaoundéré", "Tibati", "Bélel", "Meiganga", "Ngaoui", "Bankim"]
-        },
-        {
-            name: "East",
-            cities: ["Bertoua", "Batouri", "Bélabo", "Abong-Mbang", "Yokadouma", "Dimako", "Doumé"]
-        },
-        {
-            name: "South",
-            cities: ["Ebolowa", "Mbalmayo", "Ambam", "Kribi", "Sangmélima", "Olama", "Mvangan"]
-        },
-        {
-            name: "South-West",
-            cities: ["Buea", "Limbe", "Kumba", "Tiko", "Muyuka", "Mamfe", "Fontem", "Bangem"]
-        },
-        {
-            name: "North-West",
-            cities: ["Bamenda", "Kumbo", "Bafut", "Ndop", "Nkambe", "Wum", "Batibo", "Mbengwi"]
-        },
-        {
-            name: "West",
-            cities: ["Bafoussam", "Bangangté", "Dschang", "Foumban", "Mbouda", "Baham", "Bali", "Bandjoun"]
-        }
-    ]
-};
 
-// Preload zones for major cities (can be extended by users)
-const PRELOADED_ZONES = {
-    "Douala": ["Bonapriso", "Bonaberi", "Yassa", "Akwa", "Deido", "New Bell", "Makepe", "Logbessou", "Bonamoussadi", "Bepanda", "Ndogpassi", "Japoma"],
-    "Yaoundé": ["Bastos", "Mvog-Mbi", "Mokolo", "Elig-Effa", "Messa", "Etoudi", "Nlongkak", "Mfoundi", "Biyeem-Assi", "Mvolyé"],
-    "Garoua": ["Roumdé Adjia", "Pitoa", "Camp L'Ami", "Domayo", "Fignole", "Djamboutou"],
-    "Maroua": ["Domayo", "Palar", "Doualaré", "Médine", "Petté", "Makabaye"],
-    "Buea": ["Molyko", "Bokova", "Great Soppo", "Bonduma", "Mile 15", "Bova", "Bomaka"],
-    "Limbe": ["Down Beach", "Mile 2", "Mile 4", "Batoke", "Idenau", "Bakingili", "Bota"]
-};
+Action: file_editor create /app/website/data.js --file-text "// Car inventory data
+const CARS = [
+  {
+    id: 1,
+    brand: \"Mercedes-Benz\",
+    name: \"S-Class S 580\",
+    year: 2024,
+    price: 4200000000,
+    body: \"Sedan\",
+    mileage: 1500,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Obsidian Black\",
+    engine: \"4.0L V8 Biturbo\",
+    power: \"496 HP\",
+    image: \"https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=80\",
+    badge: \"NEW\",
+    description: \"The pinnacle of luxury sedans. The Mercedes-Benz S 580 combines effortless power with first-class comfort, featuring rear-axle steering, MBUX Hyperscreen, and active ambient lighting.\",
+    features: [\"Burmester 4D Sound\", \"Massage Seats\", \"MBUX Hyperscreen\", \"Rear-Axle Steering\", \"Panoramic Roof\"]
+  },
+  {
+    id: 2,
+    brand: \"BMW\",
+    name: \"M5 Competition\",
+    year: 2024,
+    price: 3800000000,
+    body: \"Sedan\",
+    mileage: 800,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Marina Bay Blue\",
+    engine: \"4.4L V8 Twin-Turbo\",
+    power: \"617 HP\",
+    image: \"https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1200&q=80\",
+    badge: \"HOT\",
+    description: \"A high-performance sports sedan that delivers track-ready capability with everyday usability. The M5 Competition is the ultimate expression of M engineering.\",
+    features: [\"M xDrive AWD\", \"Carbon Ceramic Brakes\", \"M Drive Professional\", \"Harman Kardon Audio\", \"M Carbon Roof\"]
+  },
+  {
+    id: 3,
+    brand: \"Audi\",
+    name: \"RS7 Sportback\",
+    year: 2024,
+    price: 3500000000,
+    body: \"Sedan\",
+    mileage: 2100,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Nardo Gray\",
+    engine: \"4.0L V8 TFSI\",
+    power: \"591 HP\",
+    image: \"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&q=80\",
+    badge: \"\",
+    description: \"A grand tourer with the heart of a supercar. The RS7 Sportback fuses dramatic design with quattro all-wheel drive and a thunderous V8.\",
+    features: [\"Quattro AWD\", \"RS Sport Suspension\", \"Bang & Olufsen 3D\", \"Matrix LED\", \"Virtual Cockpit Plus\"]
+  },
+  {
+    id: 4,
+    brand: \"Mercedes-Benz\",
+    name: \"GLE 450 4MATIC\",
+    year: 2023,
+    price: 2400000000,
+    body: \"SUV\",
+    mileage: 12500,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Polar White\",
+    engine: \"3.0L I6 Turbo\",
+    power: \"375 HP\",
+    image: \"https://images.unsplash.com/photo-1606664922998-f180eb96fc77?w=1200&q=80\",
+    badge: \"\",
+    description: \"A versatile luxury SUV with commanding presence and refined comfort. Perfect for family adventures and city streets alike.\",
+    features: [\"AIRMATIC Suspension\", \"MBUX with Voice\", \"Panoramic Roof\", \"Wireless Charging\", \"360° Camera\"]
+  },
+  {
+    id: 5,
+    brand: \"BMW\",
+    name: \"X5 xDrive40i\",
+    year: 2023,
+    price: 2100000000,
+    body: \"SUV\",
+    mileage: 15800,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Phytonic Blue\",
+    engine: \"3.0L I6 Turbo\",
+    power: \"335 HP\",
+    image: \"https://images.unsplash.com/photo-1607853554439-0069ec0f29b6?w=1200&q=80\",
+    badge: \"\",
+    description: \"The Sports Activity Vehicle that started it all, now better than ever. Athletic styling meets exceptional luxury in the BMW X5.\",
+    features: [\"xDrive AWD\", \"Live Cockpit Pro\", \"Adaptive M Suspension\", \"Harman Kardon\", \"Heated/Ventilated Seats\"]
+  },
+  {
+    id: 6,
+    brand: \"Audi\",
+    name: \"Q8 55 TFSI\",
+    year: 2024,
+    price: 2700000000,
+    body: \"SUV\",
+    mileage: 3200,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Glacier White\",
+    engine: \"3.0L V6 TFSI\",
+    power: \"335 HP\",
+    image: \"https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=80\",
+    badge: \"NEW\",
+    description: \"A coupe-styled SUV that turns heads. The Q8 combines bold design with cutting-edge technology and quattro performance.\",
+    features: [\"Quattro AWD\", \"Adaptive Air Suspension\", \"MMI Touch\", \"B&O 3D Sound\", \"HD Matrix LED\"]
+  },
+  {
+    id: 7,
+    brand: \"Mercedes-Benz\",
+    name: \"AMG GT 63 S\",
+    year: 2024,
+    price: 5800000000,
+    body: \"Coupe\",
+    mileage: 600,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Selenite Gray\",
+    engine: \"4.0L V8 Biturbo\",
+    power: \"630 HP\",
+    image: \"https://images.unsplash.com/photo-1617814086367-de1aebe7c2d4?w=1200&q=80\",
+    badge: \"HOT\",
+    description: \"A 4-door coupe with the soul of a supercar. The AMG GT 63 S delivers blistering performance wrapped in head-turning design.\",
+    features: [\"AMG Performance 4MATIC+\", \"AMG Active Ride Control\", \"Carbon Fiber Trim\", \"Burmester High-End\", \"AMG Track Pace\"]
+  },
+  {
+    id: 8,
+    brand: \"BMW\",
+    name: \"M4 Competition Convertible\",
+    year: 2024,
+    price: 3200000000,
+    body: \"Convertible\",
+    mileage: 1800,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Sao Paulo Yellow\",
+    engine: \"3.0L I6 Twin-Turbo\",
+    power: \"503 HP\",
+    image: \"https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=80\",
+    badge: \"\",
+    description: \"Open-top thrills meet uncompromising M performance. The M4 Competition Convertible delivers exhilaration with the top up or down.\",
+    features: [\"M xDrive AWD\", \"Soft-Top Convertible\", \"M Carbon Bucket Seats\", \"Adaptive M Suspension\", \"M Compound Brakes\"]
+  },
+  {
+    id: 9,
+    brand: \"Audi\",
+    name: \"A5 Cabriolet 45 TFSI\",
+    year: 2023,
+    price: 1500000000,
+    body: \"Convertible\",
+    mileage: 8400,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Tango Red\",
+    engine: \"2.0L I4 TFSI\",
+    power: \"261 HP\",
+    image: \"https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=80\",
+    badge: \"\",
+    description: \"Effortless elegance with the freedom of an open sky. The A5 Cabriolet pairs sophisticated design with refined performance.\",
+    features: [\"Quattro AWD\", \"Acoustic Soft Top\", \"Virtual Cockpit\", \"Matrix LED\", \"B&O Premium Sound\"]
+  },
+  {
+    id: 10,
+    brand: \"Mercedes-Benz\",
+    name: \"C 300 4MATIC\",
+    year: 2023,
+    price: 980000000,
+    body: \"Sedan\",
+    mileage: 18200,
+    fuel: \"Petrol\",
+    transmission: \"Automatic\",
+    color: \"Cavansite Blue\",
+    engine: \"2.0L I4 Turbo\",
+    power: \"255 HP\",
+    image: \"https://images.unsplash.com/photo-1563720223185-11003d516935?w=1200&q=80\",
+    badge: \"\",
+    description: \"The benchmark luxury sedan, now more refined than ever. The C 300 brings S-Class technology to a more accessible package.\",
+    features: [\"MBUX with AR Nav\", \"12.3\\" Digital Cluster\", \"Wireless CarPlay\", \"Burmester Audio\", \"AGILITY CONTROL\"]
+  },
+  {
+    id: 11,
+    brand: \"BMW\",
+    name: \"i7 xDrive60\",
+    year: 2024,
+    price: 4500000000,
+    body: \"Sedan\",
+    mileage: 1200,
+    fuel: \"Electric\",
+    transmission: \"Automatic\",
+    color: \"Oxide Gray\",
+    engine: \"Dual Electric Motor\",
+    power: \"536 HP\",
+    image: \"https://images.unsplash.com/photo-1655410558949-79b3d31bd9ec?w=1200&q=80\",
+    badge: \"NEW\",
+    description: \"The all-electric flagship that redefines luxury motoring. Theatre Screen, executive lounge seating, and silent power.\",
+    features: [\"31.3\\" Theatre Screen\", \"Executive Lounge\", \"625 km Range\", \"Sky Lounge LED Roof\", \"Bowers & Wilkins Diamond\"]
+  },
+  {
+    id: 12,
+    brand: \"Audi\",
+    name: \"e-tron GT quattro\",
+    year: 2024,
+    price: 3400000000,
+    body: \"Sedan\",
+    mileage: 2800,
+    fuel: \"Electric\",
+    transmission: \"Automatic\",
+    color: \"Tactical Green\",
+    engine: \"Dual Electric Motor\",
+    power: \"522 HP\",
+    image: \"https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?w=1200&q=80\",
+    badge: \"HOT\",
+    description: \"Electric grand tourer that proves performance and sustainability are inseparable. 0-100 in 4.1 seconds with zero emissions.\",
+    features: [\"800V Charging\", \"488 km Range\", \"Air Suspension\", \"Bang & Olufsen\", \"Matrix LED\"]
+  }
+];
+"
+Observation: Create successful: /app/website/data.js

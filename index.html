@@ -1,230 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
+
+Action: file_editor create /app/website/index.html --file-text "<!DOCTYPE html>
+<html lang=\"en\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>G4S Enterprise Security Management System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset=\"UTF-8\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+  <title>AutoPrime Motors - Premium Luxury Cars</title>
+  <meta name=\"description\" content=\"AutoPrime Motors - Dealer mobil mewah Mercedes, BMW, Audi terpercaya.\" />
+  <link rel=\"stylesheet\" href="style.css\" />
+  <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
 </head>
 <body>
-
-<!-- LOGIN SCREEN -->
-<div id="loginScreen" class="screen active">
-    <div class="login-card">
-        <div class="logo">
-            <h1>🔐 G4S CAMEROON</h1>
-            <p>Enterprise Security Management System</p>
-        </div>
-        <div class="form-group">
-            <label>📛 Matriculation Number</label>
-            <input type="text" id="loginMatric" placeholder="Enter your matriculation number">
-        </div>
-        <div class="form-group">
-            <label>🔑 One-Time PIN (OTP)</label>
-            <input type="password" id="loginOtp" placeholder="Enter OTP">
-        </div>
-        <button class="btn btn-primary" id="loginBtn">LOGIN</button>
-        <div class="demo-note">
-            <small>Demo: GUARD123 / 123456 | SUPER123 / 123456 | ADMIN123 / 123456</small>
-        </div>
+  <!-- Navbar -->
+  <header class=\"navbar\">
+    <div class=\"container nav-inner\">
+      <a href="index.html" class=\"logo\">AUTO<span>PRIME</span></a>
+      <nav>
+        <ul class=\"nav-links\" id=\"navLinks\">
+          <li><a href="index.html" class=\"active\">Home</a></li>
+          <li><a href="inventory.html">Inventory</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class=\"hamburger\" id=\"hamburger\" aria-label=\"Menu\">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-</div>
+  </header>
 
-<!-- POST REGISTRATION SCREEN (First time setup) -->
-<div id="registerPostScreen" class="screen">
-    <div class="register-card">
-        <div class="logo">
-            <h1>📌 REGISTER YOUR POST</h1>
-            <p>Please enter your G4S post information</p>
-        </div>
-        
-        <div class="form-group">
-            <label>🌍 Select Region</label>
-            <select id="regRegion" class="region-select"></select>
-        </div>
-        
-        <div class="form-group">
-            <label>🏙️ Select City/Town</label>
-            <select id="regCity" class="city-select"></select>
-        </div>
-        
-        <div class="form-group">
-            <label>📍 Select or Enter Zone</label>
-            <select id="regZone">
-                <option value="">-- Select existing zone --</option>
-            </select>
-            <input type="text" id="regZoneNew" placeholder="Or enter new zone name" style="margin-top: 8px;">
-        </div>
-        
-        <div class="form-group">
-            <label>🏢 Post Name</label>
-            <input type="text" id="regPostName" placeholder="e.g., G4S Douala Bonapriso Main Gate">
-        </div>
-        
-        <div class="form-group">
-            <label>🔢 G4S Zone OB Number (Provided by HQ)</label>
-            <input type="text" id="regZoneObNumber" placeholder="e.g., 3/3, 1113/03, 2000/1000">
-            <small>This is the unique identifier from G4S headquarters</small>
-        </div>
-        
-        <div class="btn-group">
-            <button class="btn btn-primary" id="registerPostBtn">✅ REGISTER POST</button>
-        </div>
+  <!-- Hero -->
+  <section class=\"hero\">
+    <div class=\"hero-overlay\"></div>
+    <div class=\"container hero-content\">
+      <p class=\"kicker\">PREMIUM LUXURY DEALERSHIP</p>
+      <h1>DRIVE THE <span class=\"accent\">EXTRAORDINARY</span></h1>
+      <p class=\"subtitle\">Discover the finest collection of Mercedes-Benz, BMW, and Audi.<br/>Engineered for those who demand more.</p>
+      <div class=\"hero-cta\">
+        <a href="inventory.html" class=\"btn btn-primary\">Explore Inventory</a>
+        <a href="contact.html" class=\"btn btn-ghost\">Book Test Drive</a>
+      </div>
     </div>
-</div>
-
-<!-- MAIN APP SCREEN -->
-<div id="mainScreen" class="screen">
-    <!-- Header with Post Info -->
-    <div class="header">
-        <div>
-            <h2>📋 G4S LOG BOOK</h2>
-            <div class="post-info-badge" id="postInfoBadge"></div>
-            <span id="userRoleBadge" class="badge-role">Guard</span>
-        </div>
-        <div class="header-right">
-            <span id="userNameDisplay" class="user-name"></span>
-            <button id="logoutBtn" class="btn-logout">🚪 Logout</button>
-        </div>
+    <div class=\"hero-stats\">
+      <div class=\"stat\"><h3>500+</h3><p>Cars Sold</p></div>
+      <div class=\"stat\"><h3>15+</h3><p>Years Experience</p></div>
+      <div class=\"stat\"><h3>100%</h3><p>Certified Quality</p></div>
     </div>
+  </section>
 
-    <!-- Offline Status -->
-    <div id="offlineBanner" class="offline-banner" style="display: none;">⚠️ OFFLINE MODE - Data saved locally</div>
-
-    <!-- Tab Navigation -->
-    <div class="tabs">
-        <button class="tab-btn active" data-tab="shifts">👥 SHIFTS</button>
-        <button class="tab-btn" data-tab="visitors">🚪 VISITORS</button>
-        <button class="tab-btn" data-tab="logbook">📋 LOG BOOK</button>
-        <button class="tab-btn" data-tab="reports">📄 REPORTS</button>
-        <button class="tab-btn supervisor-tab" data-tab="supervisor" style="display: none;">👔 SUPERVISOR</button>
+  <!-- Featured Brands -->
+  <section class=\"section brands\">
+    <div class=\"container\">
+      <h2 class=\"section-title\">TRUSTED BRANDS</h2>
+      <div class=\"brand-grid\">
+        <div class=\"brand-card\"><h3>Mercedes-Benz</h3><p>Engineered like no other car</p></div>
+        <div class=\"brand-card\"><h3>BMW</h3><p>The ultimate driving machine</p></div>
+        <div class=\"brand-card\"><h3>Audi</h3><p>Vorsprung durch Technik</p></div>
+      </div>
     </div>
+  </section>
 
-    <!-- TAB 1: SHIFTS -->
-    <div id="tab-shifts" class="tab-content active">
-        <div class="card">
-            <div class="card-title">🌞 DAY SHIFT <span id="dayCount" class="count">0</span></div>
-            <div class="form-row">
-                <input type="text" id="dayName" placeholder="Guard Full Name">
-                <input type="text" id="dayMatric" placeholder="Matriculation Number">
-                <button id="addDayBtn" class="btn btn-primary">➕ ADD DAY GUARD</button>
-            </div>
-            <div id="dayGuardList" class="guard-list"></div>
-            <button id="endDayBtn" class="btn btn-danger" style="margin-top: 12px;">⏹ END ALL DAY SHIFTS</button>
-            
-            <div id="dayHandover" style="display: none; margin-top: 16px;">
-                <textarea id="dayAssets" rows="2" placeholder="Client belongings / assets report"></textarea>
-                <textarea id="dayIncident" rows="2" placeholder="Incident report"></textarea>
-                <div class="confirmation-box">
-                    <p><strong>Night Guard Confirmation Required</strong></p>
-                    <input type="text" id="nightConfirmMat" placeholder="Night Guard Matriculation">
-                    <div class="btn-group">
-                        <button id="nightConfirmGood" class="btn btn-success">✅ ALL GOOD</button>
-                        <button id="nightConfirmIssue" class="btn btn-warning">⚠️ ISSUES FOUND</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">🌙 NIGHT SHIFT <span id="nightCount" class="count">0</span></div>
-            <div class="form-row">
-                <input type="text" id="nightName" placeholder="Guard Full Name">
-                <input type="text" id="nightMatric" placeholder="Matriculation Number">
-                <button id="addNightBtn" class="btn btn-primary-night">➕ ADD NIGHT GUARD</button>
-            </div>
-            <div id="nightGuardList" class="guard-list"></div>
-            <button id="endNightBtn" class="btn btn-danger" style="margin-top: 12px;">⏹ END ALL NIGHT SHIFTS</button>
-            
-            <div id="nightHandover" style="display: none; margin-top: 16px;">
-                <textarea id="nightAssets" rows="2" placeholder="Night assets verification"></textarea>
-                <textarea id="nightIncident" rows="2" placeholder="Night incident report"></textarea>
-                <div class="confirmation-box">
-                    <p><strong>Day Guard Confirmation Required</strong></p>
-                    <input type="text" id="dayConfirmMat" placeholder="Day Guard Matriculation">
-                    <div class="btn-group">
-                        <button id="dayConfirmGood" class="btn btn-success">✅ ALL GOOD</button>
-                        <button id="dayConfirmIssue" class="btn btn-warning">⚠️ ISSUES FOUND</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Featured Cars -->
+  <section class=\"section featured\">
+    <div class=\"container\">
+      <div class="section-head">
+        <h2 class="section-title\">FEATURED CARS</h2>
+        <a href="inventory.html" class=\"link-arrow\">View all →</a>
+      </div>
+      <div class=\"car-grid\" id=\"featuredGrid\"></div>
     </div>
+  </section>
 
-    <!-- TAB 2: VISITORS -->
-    <div id="tab-visitors" class="tab-content">
-        <div class="card">
-            <div class="card-title">🚪 VISITOR MANAGEMENT</div>
-            <div class="form-row">
-                <input type="text" id="visName" placeholder="Full Name">
-                <input type="text" id="visPhone" placeholder="Phone Number">
-                <input type="text" id="visId" placeholder="ID Card Number">
-                <select id="visPurpose">
-                    <option value="Meeting">Meeting</option>
-                    <option value="Delivery">Delivery</option>
-                    <option value="Maintenance">Maintenance</option>
-                    <option value="Interview">Interview</option>
-                    <option value="Other">Other</option>
-                </select>
-                <input type="text" id="visHost" placeholder="Person/Office to Visit">
-                <div class="btn-group">
-                    <button id="visitorInBtn" class="btn btn-visitor-in">✅ VISITOR IN</button>
-                    <button id="visitorOutBtn" class="btn btn-visitor-out">❌ VISITOR OUT</button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-title">📌 CURRENT VISITORS ON SITE</div>
-            <div id="visitorList" class="visitor-list"></div>
-        </div>
+  <!-- Why Choose -->
+  <section class=\"section why\">
+    <div class=\"container why-grid\">
+      <div>
+        <p class=\"kicker\">WHY AUTOPRIME</p>
+        <h2 class=\"section-title left\">EXCELLENCE IN EVERY DETAIL</h2>
+        <p class=\"lead\">We don't just sell cars — we deliver experiences. Every vehicle is meticulously inspected by certified technicians.</p>
+      </div>
+      <ul class=\"feature-list\">
+        <li><strong>150-Point Inspection</strong><span>Every car is rigorously tested before delivery.</span></li>
+        <li><strong>Financing Made Easy</strong><span>Flexible plans tailored to your needs.</span></li>
+        <li><strong>Lifetime Support</strong><span>Dedicated service team always at your disposal.</span></li>
+        <li><strong>Trade-In Welcome</strong><span>Get the best value for your current vehicle.</span></li>
+      </ul>
     </div>
+  </section>
 
-    <!-- TAB 3: LOG BOOK with SEARCH -->
-    <div id="tab-logbook" class="tab-content">
-        <div class="card">
-            <div class="card-title">📋 SEARCH LOG BOOK</div>
-            <div class="search-row">
-                <input type="text" id="searchInput" placeholder="Search by OB#, name, matric, ID...">
-                <input type="date" id="searchDateFilter">
-                <button id="clearSearchBtn" class="btn-sm">Clear</button>
-            </div>
-            <div id="logList" class="log-list"></div>
-        </div>
+  <!-- CTA -->
+  <section class=\"cta-band\">
+    <div class=\"container cta-inner\">
+      <h2>Ready to find your dream car?</h2>
+      <a href="inventory.html" class=\"btn btn-primary\">Browse Inventory</a>
     </div>
+  </section>
 
-    <!-- TAB 4: REPORTS -->
-    <div id="tab-reports" class="tab-content">
-        <div class="card">
-            <div class="card-title">📄 EXPORT REPORTS</div>
-            <div class="form-row">
-                <label>Start Date</label>
-                <input type="date" id="reportStart">
-                <label>End Date</label>
-                <input type="date" id="reportEnd">
-            </div>
-            <div class="btn-group">
-                <button id="exportPdfBtn" class="btn btn-primary">📑 Export PDF</button>
-                <button id="exportCsvBtn" class="btn btn-outline">📎 Export CSV</button>
-            </div>
-        </div>
+  <!-- Footer -->
+  <footer class=\"footer\">
+    <div class=\"container footer-grid\">
+      <div>
+        <a href="index.html" class=\"logo\">AUTO<span>PRIME</span></a>
+        <p class=\"muted\">Premium luxury dealership for the discerning driver.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="inventory.html">Inventory</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p class=\"muted\">Jl. Sudirman No. 88<br/>Jakarta, Indonesia<br/>+62 21 5500 8888<br/>info@autoprime.co.id</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p class=\"muted\">Mon - Sat: 9:00 - 20:00<br/>Sunday: 10:00 - 17:00</p>
+      </div>
     </div>
-
-    <!-- TAB 5: SUPERVISOR -->
-    <div id="tab-supervisor" class="tab-content">
-        <div class="card">
-            <div class="card-title">👔 POST INSPECTION REPORT</div>
-            <textarea id="supervisorDesc" rows="4" placeholder="Describe the situation of the post, observations, incidents, recommendations..."></textarea>
-            <input type="text" id="supervisorMat" placeholder="Your Matriculation Number">
-            <button id="submitSupervisorBtn" class="btn btn-success">✍️ SIGN & SUBMIT</button>
-        </div>
-        <div class="card">
-            <div class="card-title">📜 PREVIOUS SUPERVISOR REPORTS</div>
-            <div id="supervisorHistoryList"></div>
-        </div>
+    <div class=\"footer-bottom\">
+      <div class=\"container\"><p>© 2025 AutoPrime Motors. All rights reserved.</p></div>
     </div>
-</div>
+  </footer>
 
-<script src="data.js"></script>
-<script src="script.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
+"
+Observation: Create successful: /app/website/index.html

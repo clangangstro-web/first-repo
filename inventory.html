@@ -1,0 +1,99 @@
+
+Action: file_editor create /app/website/inventory.html --file-text "<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"UTF-8\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+  <title>Inventory - AutoPrime Motors</title>
+  <link rel=\"stylesheet\" href="style.css\" />
+  <link href=\"https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
+</head>
+<body>
+  <header class=\"navbar\">
+    <div class=\"container nav-inner\">
+      <a href=\"index.html\" class=\"logo\">AUTO<span>PRIME</span></a>
+      <nav>
+        <ul class=\"nav-links\" id=\"navLinks\">
+          <li><a href=\"index.html\">Home</a></li>
+          <li><a href=\"inventory.html\" class=\"active\">Inventory</a></li>
+          <li><a href=\"about.html\">About</a></li>
+          <li><a href=\"contact.html\">Contact</a></li>
+        </ul>
+      </nav>
+      <button class=\"hamburger\" id=\"hamburger\" aria-label=\"Menu\"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class=\"page-head\">
+    <div class=\"container\">
+      <p class=\"kicker\">OUR COLLECTION</p>
+      <h1>INVENTORY</h1>
+      <p class=\"subtitle\">Browse our handpicked selection of premium luxury vehicles.</p>
+    </div>
+  </section>
+
+  <section class=\"section\">
+    <div class=\"container\">
+      <!-- Filters -->
+      <div class=\"filter-bar\">
+        <div class=\"search-box\">
+          <input type=\"text\" id=\"searchInput\" placeholder=\"Search by model or keyword...\" />
+        </div>
+        <div class=\"filter-controls\">
+          <select id=\"brandFilter\">
+            <option value=\"\">All Brands</option>
+            <option value=\"Mercedes-Benz\">Mercedes-Benz</option>
+            <option value=\"BMW\">BMW</option>
+            <option value=\"Audi\">Audi</option>
+          </select>
+          <select id=\"bodyFilter\">
+            <option value=\"\">All Body Types</option>
+            <option value=\"Sedan\">Sedan</option>
+            <option value=\"SUV\">SUV</option>
+            <option value=\"Coupe\">Coupe</option>
+            <option value=\"Convertible\">Convertible</option>
+          </select>
+          <select id=\"priceFilter\">
+            <option value=\"\">All Prices</option>
+            <option value=\"0-1000000000\">Under 1 Billion</option>
+            <option value=\"1000000000-2000000000\">1B - 2B</option>
+            <option value=\"2000000000-5000000000\">2B - 5B</option>
+            <option value=\"5000000000-99999999999\">5B+</option>
+          </select>
+          <select id=\"sortBy\">
+            <option value=\"default\">Sort by</option>
+            <option value=\"price-asc\">Price: Low to High</option>
+            <option value=\"price-desc\">Price: High to Low</option>
+            <option value=\"year-desc\">Year: Newest</option>
+            <option value=\"year-asc\">Year: Oldest</option>
+          </select>
+          <button class=\"btn btn-ghost btn-sm\" id=\"resetFilters\">Reset</button>
+        </div>
+      </div>
+
+      <p class=\"result-count\" id=\"resultCount\"></p>
+      <div class=\"car-grid\" id=\"inventoryGrid\"></div>
+      <div class=\"empty-state\" id=\"emptyState\" style=\"display:none\">
+        <h3>No cars match your filters</h3>
+        <p>Try adjusting your search or reset filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class=\"footer\">
+    <div class=\"container footer-grid\">
+      <div><a href=\"index.html\" class=\"logo\">AUTO<span>PRIME</span></a><p class=\"muted\">Premium luxury dealership for the discerning driver.</p></div>
+      <div><h4>Navigation</h4><ul><li><a href=\"index.html\">Home</a></li><li><a href=\"inventory.html\">Inventory</a></li><li><a href=\"about.html\">About</a></li><li><a href=\"contact.html\">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><p class=\"muted\">Jl. Sudirman No. 88<br/>Jakarta, Indonesia<br/>+62 21 5500 8888<br/>info@autoprime.co.id</p></div>
+      <div><h4>Hours</h4><p class=\"muted\">Mon - Sat: 9:00 - 20:00<br/>Sunday: 10:00 - 17:00</p></div>
+    </div>
+    <div class=\"footer-bottom\"><div class=\"container\"><p>© 2025 AutoPrime Motors. All rights reserved.</p></div></div>
+  </footer>
+
+  <script src=\"js/data.js\"></script>
+  <script src=\"js/main.js\"></script>
+  <script src=\"js/inventory.js\"></script>
+</body>
+</html>
+"
+Observation: Create successful: /app/website/inventory.html
